@@ -11,17 +11,9 @@ import MongoStore from "connect-mongo";
 import { requiresAuth } from "./middleware/auth";
 const app = express();
 
-const allowedOrigins = env.FRONTEND_URL;
-
 app.use(morgan("dev"));
 
-app.use(
-  cors({
-    origin: allowedOrigins,
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true, // If using cookies or authentication
-  })
-);
+app.use(cors());
 
 // Health check endpoint
 app.get("/health", (req, res) => {
