@@ -7,7 +7,7 @@ async function fetchData(
   init?: RequestInit
 ): Promise<Response> {
   try {
-    const res = await fetch(input, init);
+    const res = await fetch(input, { ...init, credentials: "include" });
 
     if (res.ok) {
       return res; // Return the raw Response object if the request was successful
