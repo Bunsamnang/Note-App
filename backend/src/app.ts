@@ -11,7 +11,7 @@ import MongoStore from "connect-mongo";
 import { requiresAuth } from "./middleware/auth";
 const app = express();
 
-const allowedOrigins = env.FRONTEND_URL || "http://localhost:5173";
+const allowedOrigins = env.FRONTEND_URL;
 
 app.use(morgan("dev"));
 
