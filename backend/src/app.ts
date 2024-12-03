@@ -18,6 +18,8 @@ app.use(
     origin: "* ",
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"], // Allow specific HTTP methods
+    preflightContinue: false, // Allow for pre-flight requests to pass through
+    optionsSuccessStatus: 204, // Helps older browsers with 204 status
   })
 );
 
