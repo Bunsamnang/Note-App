@@ -13,11 +13,6 @@ const app = express();
 
 app.use(morgan("dev"));
 
-// Health check endpoint (moved to the top)
-app.get("/health", (req, res) => {
-  res.status(200).json({ status: "ok" });
-});
-
 console.log("Frontend URL:", env.FRONTEND_URL);
 
 app.use(
@@ -27,6 +22,11 @@ app.use(
     methods: ["GET", "POST", "PUT", "DELETE"], // Allow specific HTTP methods
   })
 );
+
+// Health check endpoint (moved to the top)
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "ok" });
+});
 
 //Backend Decodes the JSON:
 app.use(express.json());
