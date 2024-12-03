@@ -40,6 +40,7 @@ app.use(
       maxAge: 24 * 60 * 60 * 1000,
       httpOnly: true,
       secure: env.NODE_ENV === "production",
+      sameSite: "none", // Allow cross-origin cookies
     },
     rolling: true,
     store: MongoStore.create({
