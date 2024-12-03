@@ -25,6 +25,10 @@ app.use(
 
 app.use(morgan("dev"));
 
+app.get("/", (req, res) => {
+  res.json("Hello");
+});
+
 // Health check endpoint (moved to the top)
 app.get("/health", (req, res) => {
   res.status(200).json({ status: "ok" });
