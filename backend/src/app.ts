@@ -15,7 +15,7 @@ console.log("Frontend URL:", env.FRONTEND_URL);
 
 app.use(
   cors({
-    origin: "https://notes-app-frontend-2qv7.onrender.com", // hardcoded for testing,
+    origin: "* ",
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"], // Allow specific HTTP methods
   })
@@ -40,7 +40,6 @@ app.use(
       maxAge: 24 * 60 * 60 * 1000,
       httpOnly: true,
       secure: env.NODE_ENV === "production",
-      sameSite: "none", // Allow cross-origin cookies
     },
     rolling: true,
     store: MongoStore.create({
