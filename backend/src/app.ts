@@ -11,8 +11,6 @@ import MongoStore from "connect-mongo";
 import { requiresAuth } from "./middleware/auth";
 const app = express();
 
-app.use(morgan("dev"));
-
 console.log("Frontend URL:", env.FRONTEND_URL);
 
 app.use(
@@ -22,6 +20,8 @@ app.use(
     methods: ["GET", "POST", "PUT", "DELETE"], // Allow specific HTTP methods
   })
 );
+
+app.use(morgan("dev"));
 
 // Health check endpoint (moved to the top)
 app.get("/health", (req, res) => {
