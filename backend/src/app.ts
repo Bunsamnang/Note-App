@@ -15,7 +15,7 @@ console.log("Frontend URL:", env.FRONTEND_URL);
 
 app.use(
   cors({
-    origin: "https://notes-app-frontend-2qv7.onrender.com",
+    origin: env.FRONTEND_URL,
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"], // Allow specific HTTP methods
     preflightContinue: false, // Allow for pre-flight requests to pass through
