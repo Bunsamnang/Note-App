@@ -13,8 +13,12 @@
       "dest": "/backend/src/server.ts"
     },
     {
+      "src": "/health",
+      "dest": "/backend/src/server.ts"
+    },
+    {
       "src": "/(.*)",
-      "dest": "/frontend/dist/index.html"
+      "dest": "/backend/src/server.ts"
     }
   ]
 }
