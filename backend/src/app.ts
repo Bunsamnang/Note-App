@@ -23,6 +23,9 @@ app.use(
   })
 );
 
+//Backend Decodes the JSON:
+app.use(express.json());
+
 app.use(morgan("dev"));
 
 app.get("/", (req, res) => {
@@ -33,9 +36,6 @@ app.get("/", (req, res) => {
 app.get("/health", (req, res) => {
   res.status(200).json({ status: "ok" });
 });
-
-//Backend Decodes the JSON:
-app.use(express.json());
 
 app.use(
   session({
