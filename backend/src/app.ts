@@ -43,7 +43,7 @@ app.use(
       maxAge: 24 * 60 * 60 * 1000,
       httpOnly: true,
       secure: env.NODE_ENV === "production",
-      sameSite: "none", // allow cross-origin
+      sameSite: env.NODE_ENV === "production" ? "none" : undefined, // Apply `sameSite: none` only in production // allow cross-origin
     },
     rolling: true,
     store: MongoStore.create({
