@@ -2,7 +2,7 @@ import { RequestHandler } from "express";
 import createHttpError from "http-errors";
 
 export const requiresAuth: RequestHandler = async (req, res, next) => {
-  console.log("Session:", req.session); // Log the session to check its state
+  console.log("Session:", req.session.userId); // Log the session to check its state
 
   if (req.session.userId) {
     next();

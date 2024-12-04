@@ -69,7 +69,6 @@ export const signUp: RequestHandler<
     // store session.userId of the user
     req.session.userId = newUser._id;
     console.log("Session User ID after signup:", req.session.userId); // Log session data for debugging
-
     res.status(201).json(newUser);
   } catch (error) {
     next(error);

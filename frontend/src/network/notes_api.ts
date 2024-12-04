@@ -7,7 +7,7 @@ async function fetchData(
   init?: RequestInit
 ): Promise<Response> {
   try {
-    const res = await fetch(input, { ...init, credentials: "include" });
+    const res = await fetch(input, init);
 
     if (res.ok) {
       return res; // Return the raw Response object if the request was successful
@@ -44,6 +44,7 @@ export async function getLoggedInUser(): Promise<User> {
     `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/users`,
     {
       method: "GET",
+      credentials: "include",
     }
   );
   return userRes.json();
@@ -64,6 +65,7 @@ export async function singUp(credentials: SingupCredentials): Promise<User> {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(credentials),
+      credentials: "include",
     }
   );
 
@@ -83,6 +85,7 @@ export async function login(credentials: LoginCredentials): Promise<User> {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(credentials),
+      credentials: "include",
     }
   );
 
@@ -92,14 +95,14 @@ export async function login(credentials: LoginCredentials): Promise<User> {
 export async function logout() {
   await fetchData(
     `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/users/logout`,
-    { method: "POST" }
+    { method: "POST", credentials: "include" }
   );
 }
 
 export async function fetchNotes(): Promise<Note[]> {
   const res = await fetchData(
     `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/notes`,
-    { method: "GET" }
+    { method: "GET", credentials: "include" }
   );
   return res.json();
 }
@@ -118,6 +121,7 @@ export async function createNote(note: NoteInput): Promise<Note> {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(note),
+      credentials: "include",
     }
   );
 
@@ -129,6 +133,7 @@ export async function deleteNote(noteId: string) {
     `${import.meta.env.VITE_REACT_APP_BACKEND_URL}/api/notes/${noteId}`,
     {
       method: "DELETE",
+      credentials: "include",
     }
   );
 }
@@ -142,6 +147,7 @@ export async function updateNote(noteId: string, note: NoteInput) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(note), // pass input (req.body)
+      credentials: "include",
     }
   );
   return res.json();
